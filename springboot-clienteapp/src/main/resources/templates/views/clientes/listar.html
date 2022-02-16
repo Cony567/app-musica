@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="xmlns:th="http://www.thymeleaf.org"">
+<head th:replace="layouts/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="background-color: #ccc">
+	<header th:replace="layouts/master :: header"></header>
+
+	<div class="d-flex justify-content-center mb-4" style="width: 100%;">
+		<div class="card bg-danger text-light" style="width: 500px;border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;border-top-right-radius: 0px;border-top-left-radius: 0px;">
+			<div class="card-body text-center">
+				<blockquote class="blockquote mb-0">
+					<h1 th:text="${titulo}"></h1>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+	<div class="text-end">
+		<a th:href="@{/clientes/crear}" class="btn btn-success mb-4" style="margin-right:200px;">Crear Nuevo Cliente</a>
+	</div>
+	<div class="d-flex justify-content-center" style="width: 100%;margin-bottom:100px;">
+		<div class="" style="width: 1000px;">
+			<table class="table">
+				<thead class="table-dark">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Nombres</th>
+						<th scope="col">Apellidos</th>
+						<th scope="col">Teléfono</th>
+						<th scope="col">Correo</th>
+						<th scope="col">Ciudad</th>
+						<th scope="col">Editar</th>
+						<th scope="col">Eliminar</th>
+						<th scope="col">Ver</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cl:${clientes}">
+						<th scope="row" th:text="${cl.id_cliente}"></th>
+						<td th:text="${cl.nombres}"></td>
+						<td th:text="${cl.apellidos}"></td>
+						<td th:text="${cl.telefono}"></td>
+						<td th:text="${cl.email}"></td>
+						<td th:text="${cl.ciudad.ciudad}"></td>
+						<td><a th:href="@{/clientes/editar/}+${cl.id_cliente}" class="btn btn-warning text-dark btn-sm">Editar</a></td>
+						<td><a th:href="@{/clientes/eliminar/}+${cl.id_cliente}" class="btn btn-danger btn-sm" onclick="return confirm('Seguro que va a eliminar el registro?');">Eliminar</a></td>
+						<td><a th:href="@{/clientes/ver/}+${cl.id_cliente}" class="btn btn-primary btn-sm">Ver</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	
+	<footer th:replace="layouts/master :: footer"></footer>
+</body>
+</html>

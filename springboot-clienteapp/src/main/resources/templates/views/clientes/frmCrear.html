@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="xmlns:th="http://www.thymeleaf.org"">
+<head th:replace="layouts/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="background-color: #ccc">
+	<header th:replace="layouts/master :: header"></header>
+
+
+	<div class="d-flex justify-content-center mt-5" style="padding-bottom: 100px;">
+		<div style="width: 700px;">
+			<div class="card" style="border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-right-radius: 40px; border-top-left-radius: 40px;">
+				<div class="card-header bg-danger text-light text-center pt-3" style="border-top-right-radius: 40px; border-top-left-radius: 40px;"> 
+					<h5 th:text="${titulo}"></h5>
+				</div>
+				<div class="card-body p-5">
+					<form th:object="${cliente}" th:action="@{/clientes/guardar}" method="post">
+					 	<input type="hidden" th:field="*{id_cliente}" class="form-control" id="id_cliente">
+						<div class="mb-3">
+							<label for="nombres" class="form-label">Nombres</label>
+							<input type="text" th:field="*{nombres}" class="form-control" id="nombres">
+							<small class="form-text text-danger text-sm" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></small>
+						</div>
+						<div class="mb-3">
+							<label for="apellidos" class="form-label">Apellidos</label> <input
+								type="text" th:field="*{apellidos}" class="form-control" id="apellidos">
+							<small class="form-text text-danger text-sm" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
+						</div>
+						<div class="mb-3">
+							<label for="telefono" class="form-label">Teléfono</label> <input
+								type="number" th:field="*{telefono}" maxlength="9" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" id="telefono">
+							<small class="form-text text-danger text-sm" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+						</div>
+						<div class="mb-3">
+							<label for="email" class="form-label">Correo</label> <input
+								type="text" th:field="*{email}" class="form-control" id="email">
+							<small class="form-text text-danger text-sm" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+						</div>
+						<div class="mb-3">
+							<label for="ciudad" class="form-label">Ciudad</label>
+							<select type="text" th:field="*{ciudad}" class="form-control" id="ciudad">
+								<option th:each="ciudad:${ciudades}" th:value="${ciudad.id_ciudades}" th:text="${ciudad.ciudad}"/>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-danger" th:text="Guardar"></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layouts/master :: footer"></footer>
+
+	<!-- <footer th:fragment="footer" class="bg-dark text-light container-fluid text-center" style="bottom: 0;position: relative;">
+		<div>
+			<p>Copy no se que :v</p>
+		</div>
+		<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	</footer> -->
+	
+</body>
+</html>

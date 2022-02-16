@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="background-color: #ccc">
+	<header th:replace="layouts/master :: header"></header>
+
+
+	<div class="d-flex justify-content-center mt-5"
+		style="padding-bottom: 100px;">
+		<div class="alert alert-danger shadow-lg d-flex align-items-center" role="alert">
+			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+				aria-label="Danger:">
+				<use th:href="@{/icons-1.7.2/icons/exclamation-triangle-fill.svg}" /></svg>
+			<div th:text="${error}"></div>
+		</div>
+	</div>
+
+	<footer th:replace="layouts/master :: footer"></footer>
+
+	<!-- <footer th:fragment="footer" class="bg-dark text-light container-fluid text-center" style="bottom: 0;position: relative;">
+		<div>
+			<p>Copy no se que :v</p>
+		</div>
+		<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	</footer> -->
+
+</body>
+</html>

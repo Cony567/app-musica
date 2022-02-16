@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="xmlns:th="http://www.thymeleaf.org"">
+<head th:replace="layouts/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="background-color: #ccc">
+	<header th:replace="layouts/master :: header"></header>
+
+	<div class="d-flex justify-content-center mb-4" style="width: 100%;">
+		<div class="card" style="width: 500px;border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;border-top-right-radius: 0px;border-top-left-radius: 0px;">
+			<div class="card-body text-center">
+				<blockquote class="blockquote mb-0">
+					<h1 th:text="${titulo}"></h1>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+	<div class="text-start">
+		<a th:href="@{/clientes/}" class="btn btn-dark mb-4" style="margin-left:100px;">Volver Listar</a>
+	</div>
+	<div class="d-flex justify-content-center" style="width: 100%;">
+		
+		<div class="card text-center" style="width: 700px;">
+			<div class="card-header">
+				<span>Id: </span><span th:text="${cliente.id_cliente}" ></span>
+			</div>
+			<div class="card-body p-5">
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-6">
+						<p class="card-title pb-3">Nombres:</p>
+						<p class="card-title pb-3">Apellidos:</p>
+						<p class="card-title pb-3">Teléfonos:</p>
+						<p class="card-title pb-3">Correo:</p>
+						<p class="card-title pb-3">Ciudad:</p>
+					</div>
+					<div class="col-12 col-md col-lg">
+						<h5 th:text="${cliente.nombres}" class="card-title pb-3"></h5>
+						<h5 th:text="${cliente.apellidos}" class="card-title pb-3"></h5>
+						<h5 th:text="${cliente.telefono}" class="card-title pb-3"></h5>
+						<h5 th:text="${cliente.email}" class="card-title pb-3"></h5>
+						<h5 th:text="${cliente.ciudad.ciudad}" class="card-title pb-3"></h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+	<footer th:replace="layouts/master :: footer"></footer>
+</body>
+</html>

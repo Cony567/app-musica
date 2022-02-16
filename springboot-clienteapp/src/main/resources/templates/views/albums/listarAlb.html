@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="xmlns:th="http://www.thymeleaf.org"">
+<head th:replace="layouts/master :: head">
+<meta charset="UTF-8">
+<title>Artistas</title>
+</head>
+<body style="background-color: #ccc">
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+			<div class="container-fluid ps-5">
+				<a class="navbar-brand" href="/">Sonido y Sentido</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- ENLACES DEL MENÚ -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/clientes/}">Clientes</a></li>
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/clientes/crear}">Crear
+								Cliente</a></li>
+
+
+					</ul>
+					<form class="d-flex">
+						<input class="form-control me-2" type="search"
+							placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-dark" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+	<main style="margin-bottom:100px;">
+		<div class="d-flex justify-content-center row mb-4"
+			style="width: 100%;">
+			<div class="card" style="width: 500px;">
+				<div class="card-body text-center">
+					<blockquote class="blockquote mb-0">
+						<h1>Vea Artistas</h1>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+
+		<div class="d-flex justify-content-center row mb-4"
+			style="width: 100%;">
+			<div class="card mb-3 p-4" style="width: 80%;" >
+				<div class="row g-0">
+					<div class="col-md-4">
+						<!-- <img
+							th:src=""
+							class="img-fluid rounded-start" alt="..." height="289" width="414">  -->
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title" th:text="hola"></h5>
+							<p class="card-text" th:text="hola"></p>
+							<p class="card-text">
+								<small class="text-muted" >Fecha de nacimiento: </small>
+								<small class="text-muted" th:text="hola"></small>
+							</p>
+							<p class="card-text">
+								<button class="btn btn-danger">Ver Discografía</button>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+
+
+
+	<footer th:replace="layouts/master :: footer"></footer>
+</body>
+</html>

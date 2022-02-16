@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/master :: head">
+</head>
+<body class="fondo-body">
+	<header th:replace="layouts/master :: header"></header>
+
+
+	<div class="d-flex justify-content-center mt-5"
+		style="padding-bottom: 100px;">
+		<div style="width: 700px;">
+			<div class="container-cristal"
+				style="border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-right-radius: 40px; border-top-left-radius: 40px;">
+				<div class="card-header text-light text-center pt-3"
+					style="border-top-right-radius: 40px; border-top-left-radius: 40px;">
+					<h5 th:text="${titulo} + ${artista.nombre}" style="color: grey; text-shadow: 0 0.200rem 0.50rem rgba(0, 0, 0, 0.1) !important;"></h5>
+				</div>
+				<div class="card-body p-5">
+					<form th:object="${album}" th:action="@{/discos/guardar/}+${artista.id_artista}"
+						method="post">
+						<input type="hidden" th:field="*{id_album}" class="form-control d-none"
+							id="id_album">
+						<div class="mb-3">
+							<label for="nombre" class="form-label">Nombre del Album</label>
+							<input type="text" th:field="*{nombre}" class="input-nuevo"
+								id="nombre"> <small class="form-text text-danger text-sm" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+						</div>
+						<div class="mb-3">
+							<label for="fecha_lanz" class="form-label">Fecha
+								Lanzamiento</label> <input type="date" th:field="*{fecha_lanz}"
+								class="input-nuevo" id="fecha_lanz"> <small
+								class="form-text text-danger text-sm"
+								th:if="${error_fecha != null}"
+								th:text="${error_fecha}"></small>
+						</div>
+						<!-- <div class="mb-3">
+							<input type="hidden" th:field="*{artista}" class="form-control"
+								id="artista"> <small
+								class="form-text text-danger text-sm"
+								th:if="${#fields.hasErrors('artista')}"
+								th:errors="*{artista}"></small>
+						</div> -->
+						<button type="submit" class="btn btn-danger" th:text="Guardar"></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layouts/master :: footer"></footer>
+
+	<!-- <footer th:fragment="footer" class="bg-dark text-light container-fluid text-center" style="bottom: 0;position: relative;">
+		<div>
+			<p>Copy no se que :v</p>
+		</div>
+		<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	</footer> -->
+	<script type="text/javascript">
+
+		const cargarFechaActual = ()=>{
+		  let today = new Date();
+		  let dd = today.getDate();
+		  let mm = today.getMonth() + 1; //January is 0!
+		  let yyyy = today.getFullYear();
+	
+		  if (dd < 10) {
+		    dd = '0' + dd;
+		  }
+	
+		  if (mm < 10) {
+		    mm = '0' + mm;
+		  }
+	
+		  today = yyyy + '-' + mm + '-' + dd ;
+		  return today;
+		}
+		document.addEventListener("DOMContentLoaded",()=>{
+			let input_fecha = document.querySelector("#fecha_lanz");
+			input_fecha.max = cargarFechaActual();
+			console.log(input_fecha);
+		});
+	</script>
+</body>
+</html>
